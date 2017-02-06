@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--***********************************************************************-->
+<!-- Copyright 2002-2005. EMC Corporation.  All Rights Reserved.           -->
+<!--***********************************************************************-->
+<!--                                                                       -->
+<!-- Project        Lister                                                 -->
+<!-- Module         Session                                                -->
+<!-- File           session_actions.xml                                    -->
+<!-- Description    Session Actions Definition                             -->
+<!-- Created on     9 Apr 2002                                             -->
+<!-- Tab width      3                                                      -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+<!--                                                                       -->
+<!-- VCS Maintained Data                                                   -->
+<!--                                                                       -->
+<!-- Revision       $Revision: 10$                                           -->
+<!-- Modified on    $Date: 1/2/2007 11:41:21 PM$                            -->
+<!--                                                                       -->
+<!-- Log at EOF                                                            -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+<config version="1.0">
+   <scope>
+      <action id="calwinsearchlogout" extends="logout:webtop/config/session_actions.xml">
+	 	<execution class="com.documentum.webcomponent.library.actions.LogoutAction">
+	 		<homeurl>/component/calwinsearchlogoff</homeurl>
+		 </execution>
+	 </action>
+   </scope>
+</config>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Developer's Comments
+# Elements
+/* <execution>.<homeurl>                URL to a JSP page or component that will 
+                                        be displayed when the user logs out of 
+                                        the application 
+*/
+#
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->

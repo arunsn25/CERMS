@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+ <!--***********************************************************************-->
+<!--                                                                       -->
+<!-- Copyright (c) 2006-2007 EMC Corporation.                              -->
+<!-- All Rights reserved.                                                  -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+<!--                                                                       -->
+<!-- Project        Webtop                                                 -->
+<!-- Module         Search                                                 -->
+<!-- File           search60_component.xml                                 -->
+<!-- Description    Search component definition                            -->
+<!-- Created on     January 16th, 2007                                     -->
+<!-- Tab width      3                                                      -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+<!--                                                                       -->
+<!-- VCS Maintained Data                                                   -->
+<!--                                                                       -->
+<!--Revision       $Revision: 2$                                          -->
+<!--Modified by    $Author: Ganugapenta, Veera$                             -->
+<!--Modified on    $Date: 6/24/2008 1:53:47 PM$                             -->
+<!--                                                                       -->
+<!-- Log at EOF                                                            -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+
+<config version="1.0">
+   <scope>
+      <component id="cosdsearchfullui" extends="search:webtop/config/search60_component.xml">
+         <desc>
+			COSD extended search component
+         </desc>
+
+         <!-- Component Layout -->
+          <!-- Note: the classic and streamline view is the same for the search results page.  -->
+         <pages>
+            <filter clientenv='not appintg'>
+               <start>/custom/jsp/library/component/search/searchresultsfullui.jsp</start>
+            </filter>
+            <filter clientenv='appintg'>
+               <start>/webcomponent/library/searchresultslist/search60/appintg_searchresults.jsp</start>
+            </filter>
+            <filter clientenv='portal'>
+               <streamline>/webcomponent/library/searchresultslist/searchex/searchresults_drilldown.jsp</streamline>
+            </filter>
+            <filter clientenv='not portal'>
+               <streamline>/custom/jsp/searchresultsfullui.jsp</streamline>
+            </filter>
+         </pages>
+
+		<class>com.cosd.greenbuild.calwin.web.library.search.CalwinSearchResults</class>
+		<nlsbundle>com.cosd.greenbuild.calwin.web.library.search.Search60FullUINlsProp</nlsbundle>
+		
+		 <!-- default object type for the search -->
+         <type>calwin_case_doc</type>
+		
+		<columns_list>
+			<loadinvisibleattribute>true</loadinvisibleattribute>
+            <column>
+               <attribute>r_object_id</attribute>
+               <label><nlsid>MSG_NAME</nlsid></label>
+               <visible>false</visible>
+            </column>            
+            <column>
+               <attribute>new_document</attribute>
+               <label><nlsid></nlsid></label> <!-- MSG_NEW -->
+               <visible>true</visible>
+            </column>
+			<column>
+               <attribute>case_no</attribute>
+               <label><nlsid>MSG_CASE_NO</nlsid></label>
+               <visible>true</visible>
+            </column>
+			<column>
+               <attribute>received_date</attribute> <!-- r_modify_date -->
+               <label><nlsid>MSG_MODIFY_DATE</nlsid></label>
+               <visible>true</visible>
+            </column>
+			<column>
+               <attribute>computedDate</attribute>
+               <label><nlsid>MSG_MODIFY_DATE</nlsid></label>
+               <visible>false</visible>
+            </column>            
+            <column>
+               <attribute>category</attribute>
+               <label><nlsid>MSG_CATEGORY</nlsid></label>
+               <visible>true</visible>
+            </column>
+            <column>
+               <attribute>sub_category</attribute>
+               <label><nlsid>MSG_SUBCATEGORY</nlsid></label>
+               <visible>true</visible>
+            </column>
+			<column>
+               <attribute>doc_type</attribute>
+               <label><nlsid>MSG_DOCUMENT_TYPE</nlsid></label>
+               <visible>true</visible>
+            </column>
+            <column>
+               <attribute>data_month</attribute>
+               <label><nlsid>MSG_DATA_MONTH</nlsid></label>
+               <visible>true</visible>
+            </column>
+            <column>
+               <attribute>provider_number</attribute>
+               <label><nlsid>MSG_PROVIDER_NUMBER</nlsid></label>
+               <visible>true</visible>
+            </column>
+            <column>
+               <attribute>computedName</attribute>
+               <label><nlsid>MSG_APPLICANT_NAME</nlsid></label>  <!-- MSG_COMPUTED_ATTR -->
+               <visible>false</visible>
+            </column>
+            <column>
+            	<attribute>applicant_fname</attribute>
+               	<label><nlsid>MSG_NAME</nlsid></label>
+               	<visible>false</visible>
+            </column>
+            <column> 
+            	<attribute>applicant_mname</attribute>
+               	<label><nlsid>MSG_NAME</nlsid></label>
+               	<visible>false</visible>
+            </column>
+            <column> 
+            	<attribute>applicant_lname</attribute>
+               	<label><nlsid>MSG_NAME</nlsid></label>
+               	<visible>true</visible>
+            </column>            
+            <column>
+               <attribute>dob</attribute>
+               <label><nlsid>MSG_DOB</nlsid></label>
+               <visible>true</visible>
+            </column>
+			<column>
+               <attribute>ssn</attribute>
+               <label><nlsid>MSG_SSN</nlsid></label>
+               <visible>true</visible>
+            </column>
+            <column>
+               <attribute>cin_no</attribute>
+               <label><nlsid>MSG_CIN_No</nlsid></label>
+               <visible>true</visible>
+            </column>
+            <column>
+               <attribute>cwin_no</attribute>
+               <label><nlsid>MSG_CWIN_No</nlsid></label>
+               <visible>true</visible>
+            </column>
+            <column>
+               <attribute>soft_delete</attribute>
+               <label><nlsid></nlsid></label> <!-- MSG_IS_REMOVE -->
+               <visible>true</visible>
+            </column>
+            <column>
+               <attribute>scan_date</attribute>
+               <label><nlsid>MSG_SCAN_DATE</nlsid></label>
+               <visible>true</visible>
+            </column>
+            <column>
+               <attribute>scan_location</attribute>
+               <label><nlsid>MSG_SCAN_LOCATION</nlsid></label>
+               <visible>true</visible>
+            </column>
+            <column>
+               <attribute>scan_operator</attribute>
+               <label><nlsid>MSG_SCAN_OPERATOR</nlsid></label>
+               <visible>true</visible>
+            </column>			
+		 </columns_list>
+
+      </component>
+   </scope>
+</config>

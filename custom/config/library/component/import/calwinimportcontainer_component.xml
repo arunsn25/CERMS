@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+ ******************************************************************************
+ * Copyright 2004. EMC Corporation.  All Rights Reserved.
+ ******************************************************************************
+ *
+ * Project        WDK 5.3
+ * Created on     July 22, 2004
+ * Tab width      3
+ *
+ ******************************************************************************
+ *
+ * PVCS Maintained Data
+ *
+ * Revision       $Revision: 18$
+ * Modified on    $Date: 5/26/2008 3:07:01 PM$
+ *
+ ******************************************************************************
+-->
+<config version="1.0">
+   <scope>
+      <component id="calwinimportcontainer" extends="combocontainer:wdk/config/combocontainer_component.xml">
+         <desc>
+            This is the WDK importcontainer component. It is the container 
+            used to display components that enable the import of local files 
+            into repositories. 
+         </desc>
+         <ucfrequired>
+            <events>
+               <event name="onOk" enabled="true" />
+            </events>
+         </ucfrequired>
+         <params>
+            <param name="component" required="true"/>
+            <param name="componentArgs" required="true"/>
+            <param name="filePath" required="false"/>
+            <param name="parentPath" required="false"/>
+            <param name="isDirectory" required="false"/>
+         </params>
+         <pages>
+            <!-- <fileselection>/webcomponent/library/contenttransfer/importcontent/fileselection.jsp</fileselection> -->
+			<fileselection>/custom/jsp/library/component/contentxfer/importcontent/fileselection.jsp</fileselection>
+            <folderselection>/webcomponent/library/contenttransfer/importcontent/folderselection.jsp</folderselection>
+			<!-- <folderselection>/custom/jsp/library/component/contentxfer/importcontent/fileselection.jsp</folderselection> -->
+            <filter clientenv="not appintg">
+               <containerstart>/webcomponent/library/contenttransfer/importcontent/importcontainer.jsp</containerstart>
+            </filter>
+            <filter clientenv="appintg">
+               <containerstart>/webcomponent/library/contenttransfer/importcontent/appintgimportcontainer.jsp</containerstart>
+            </filter>
+         </pages>
+         <!-- <class>com.documentum.webcomponent.library.contenttransfer.importcontent.UcfImportContainer</class> -->
+		 <class>com.cosd.greenbuild.calwin.web.library.contentxfer.importcontent.CalwinUcfImportContainer</class>
+         <nlsbundle>
+            com.documentum.webcomponent.library.contenttransfer.importcontent.ImportContentContainerNlsProp</nlsbundle>
+         <service>
+            <!--The pre-processor to convert the msg files to emcmf format.
+                The conversion is done during service preprocess call.
+            -->
+            <pre-processor-class>com.documentum.webcomponent.library.contenttransfer.importcontent.messagearchive.MailMsgToEMFProcessor</pre-processor-class>
+            <service-class>com.documentum.web.contentxfer.impl.ImportService</service-class>
+            <transport-class>com.documentum.web.contentxfer.ucf.UcfContentTransport</transport-class>
+         </service>
+         <max-import-files-and-folders>50</max-import-files-and-folders>
+
+         <!--
+         Deprecated value
+         The  max-import-file-count is depricated, instead use max-import-files-and-folders
+         -->
+         <!--<max-import-file-count>1000</max-import-file-count>-->
+         <bindingcomponentversion>latest</bindingcomponentversion>
+         <helpcontextid>import</helpcontextid>
+
+         <!--if false then the previous page values does not get propagated to next page   -->
+         <propagatepreviouspagevalues>true</propagatepreviouspagevalues>
+
+         <!--Specify the list of specialized import component for a file format -->
+         <custom-import-component-mappings>
+              <!-- Specify the mapping for a format -->
+              <custom-import-component-mapping>
+                 <!--Application configuration key to enable the custom component.
+                  This key help in integrating the app.xml setting to enable/disable the custom component.
+                 -->
+                 <enable-key>application.messageArchive-support.enabled</enable-key>
+                 <!--format -->
+                 <format>msg</format>
+                 <!--import component -->
+                 <import-component>emfimport</import-component>
+              </custom-import-component-mapping>
+         </custom-import-component-mappings>
+      </component>
+   </scope>
+</config>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Developer's Comments
+# Parameters
+/* component                            (Required) Supplied by the action 
+                                        execution class). The name of the 
+                                        component to contain. 
+*/
+/* componentArgs                        (Required) Supplied by the 
+                                        LaunchComponent action execution class. 
+                                        List of arguments and values to pass to 
+                                        each contained component. 
+*/
+/* filePath                             (Optional) Path to the file on the local 
+                                        machine. 
+*/
+/* isDirectory                          (Optional) Boolean that indicates 
+                                        whether the object being imported is a 
+                                        directory. 
+*/
+/* parentPath                           (Optional) Repository path into which 
+                                        the file is imported. 
+*/
+#
+# Elements
+/* <bindingcomponentversion>            Specifies the version of components that 
+                                        are supported by the container 
+                                        component. Default: latest 
+*/
+/* <max-import-file-count>              Maximum number of import files allowed in
+                                        one operation. The number of files that 
+                                        can be accommodated in one operation is
+                                        dependent on the max heap setting of the
+                                        application server.              
+*/
+/* <ucfrequired>                        If this element is present, then the 
+                                        component requires UCF to be installed. 
+*/
+/* <max-import-file-count>              Specifies the maximum number of files 
+                                        that can be imported in a single 
+                                        operation. 
+*/
+#
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->

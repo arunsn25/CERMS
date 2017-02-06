@@ -1,0 +1,422 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<config version="1.0">
+   <scope type='calwin_case_doc'>
+
+      <menuconfig id="context-menu">
+         <filter clientenv='not appintg'>
+         <actionmenuitem dynamic="singleselect" action="properties" hotkeyid="HOTKEY_EDIT" nlsid="MSG_PROPERTIES" showifdisabled="false" showifinvalid="false"/>
+         <!-- <actionmenuitem dynamic="singleselect" action="editindexfields" hotkeyid="HOTKEY_EDIT" nlsid="MSG_PROPERTIES" showifdisabled="false" showifinvalid="false"/> -->
+         <actionmenuitem dynamic="multiselect" action="remove_document" hotkeyid="HOTKEY_PROMOTE" nlsid="MSG_REMOVEDOC" showifdisabled="false" showifinvalid="false"/>
+         <actionmenuitem dynamic="multiselect" action="unremove_document" hotkeyid="HOTKEY_SUBSCRIBE" nlsid="MSG_UNREMOVEDOC" showifdisabled="false" showifinvalid="false"/>
+         <actionmenuitem dynamic="multiselect" action="changeprocessed_document" hotkeyid="HOTKEY_ADD_TO_CLIPBOARD" nlsid="MSG_CHANGEPROCESSEDSTATUS" showifdisabled="false" showifinvalid="false"/>
+         <actionmenuitem dynamic="singleselect" action="changecasepersons_document" hotkeyid="HOTKEY_VIEW_PROPERTIES_INFO" nlsid="MSG_CHANGECASENAME" showifdisabled="false" showifinvalid="false"/>
+         <actionmenuitem dynamic="multiselect" action="soms_merge_selected_documents" hotkeyid="HOTKEY_VIEW" nlsid="MSG_MASHUP" showifdisabled="false" showifinvalid="false"/>
+		 <actionmenuitem dynamic="multiselect" action="exportWithoutPolicy" hotkeyid="HOTKEY_ADVANCED_SEARCH" nlsid="MSG_SAVEWITHOUTPOLICY" showifdisabled="false" showifinvalid="false"/>
+         <actionmenuitem dynamic="multiselect" action="delete" hotkeyid="HOTKEY_DELETE" nlsid="MSG_DELETE" showifdisabled="false" showifinvalid="false"/>
+         </filter>
+      </menuconfig>
+      
+<!--      <action id="properties">
+         <desc>
+            Displays the properties of an object (dm_sysobject).
+         </desc>
+         <params>
+            <param name="objectId" required="true"/>
+            <param name="enableShowAll" alias="ctrlKeyPressed" required="false"/>
+            <param name="preferForms" required="false"/>
+            <param name="templateId" required="false"/>
+         </params>
+         <failoverenabled>true</failoverenabled>
+         <execution class="com.documentum.web.formext.action.RedirectActionExecution">
+            <dynamicfilter class="com.documentum.web.formext.action.LaunchComponentFilter">
+               <option>
+                  <criteria>
+                     <criterion name='multiobjs' value='true'
+                        evaluatorclass='com.documentum.webcomponent.library.properties.LaunchMultiObjectPropertiesEvaluator'/>
+                  </criteria>
+                  <selection>
+                     <execution class="com.documentum.web.formext.action.LaunchComponent">
+                        <component>multiobjectsattributes</component>
+                        <container storeargsinmemory="true">multiobjectsproperties</container>
+                     </execution>
+                  </selection>
+               </option>
+               <option>
+                  <criteria>
+                     <criterion name="preferforms" value="true"
+                                evaluatorclass="com.documentum.webcomponent.xforms.action.XFormsLaunchPropertiesEvaluator"/>
+                  </criteria>
+                  <selection>
+                     <execution class="com.documentum.web.formext.action.LaunchComponent">
+                        <component>editxformsproperties</component>
+                     </execution>
+                  </selection>
+               </option>
+               <option>
+                  <criteria>
+                  </criteria>
+                  <selection>
+                     <execution class="com.documentum.web.formext.action.LaunchComponent">
+                        <component>attributes</component>
+                        <container>properties</container>
+                     </execution>
+                  </selection>
+               </option>
+            </dynamicfilter>
+         </execution>
+         <invocation>
+            <modalpopup>
+               <windowsize>properties</windowsize>
+               <refreshparentwindow>onok</refreshparentwindow>
+            </modalpopup>
+         </invocation>
+      </action> -->
+      
+     <action id="properties" extends="properties:webcomponent/config/actions/dm_sysobject_actions.xml">
+      	<preconditions>
+			<precondition class="com.cosd.greenbuild.calwin.web.actions.EditIndexFieldsAction"></precondition>
+		</preconditions>
+      </action>
+      
+    
+    <action id="editindexfields">
+		<desc>
+			Edit index fields action
+		</desc>
+		<params>
+			<param name="objectId" required="true"/>
+		</params> 
+		<preconditions>
+			<!-- <precondition class="com.documentum.web.formext.action.RolePrecondition">
+				<role>testrole1</role>
+			</precondition> -->
+			<!-- <precondition class="com.cosd.greenbuild.calwin.web.actions.RemoveDocumentAction"></precondition> -->
+		</preconditions>	
+		<execution class="com.documentum.web.formext.action.LaunchComponent">
+			<component>editindexfieldscomponent</component>
+			<container>properties</container> <!-- multiargdialogcontainer -->
+			<!-- <nlsbundle>com.cosd.greenbuild.calwin.web.library.remove.COSDRemoveActionNlsProp</nlsbundle> -->		
+		</execution>
+		<invocation>
+			<modalpopup>
+				<windowsize>medium</windowsize> <!-- removedialog -->
+				<refreshparentwindow>onok</refreshparentwindow> <!-- onDelete -->
+			</modalpopup>
+		</invocation>		 
+	</action>    
+    
+    <action id="remove_document">
+		<desc>
+			Remove CFile document action
+		</desc>
+		<params>
+			<param name="objectId" required="true"/>
+		</params> 
+		<preconditions>
+			<!-- <precondition class="com.documentum.web.formext.action.RolePrecondition">
+				<role>testrole1</role>
+			</precondition> -->
+			<precondition class="com.cosd.greenbuild.calwin.web.actions.RemoveDocumentAction"></precondition>
+		</preconditions>	
+		<execution class="com.documentum.web.formext.action.LaunchComponent">
+			<component>removedoccomponent</component>
+			<container>multiargdialogcontainer</container>
+			<nlsbundle>com.cosd.greenbuild.calwin.web.library.remove.COSDRemoveActionNlsProp</nlsbundle>		
+		</execution>
+		<invocation>
+			<modalpopup>
+				<windowsize>medium</windowsize> <!-- removedialog -->
+				<refreshparentwindow>onok</refreshparentwindow> <!-- onDelete -->
+			</modalpopup>
+		</invocation>		 
+	</action>
+	
+	
+	<action id="unremove_document">
+		<desc>
+			un-Remove CFile document action
+		</desc>
+		<params>
+			<param name="objectId" required="true"/>
+		</params> 
+		<preconditions>
+		<!--	<precondition class="com.documentum.web.formext.action.RolePrecondition">
+				<role>erms_enable_soft_delete</role>
+			</precondition> -->
+			<precondition class="com.cosd.greenbuild.calwin.web.actions.UnRemoveDocumentAction"></precondition>
+		</preconditions>	
+
+		<execution class="com.documentum.web.formext.action.LaunchComponent">
+			<component>unremovedoccomponent</component>
+			<container>multiargdialogcontainer</container>		
+		</execution>
+
+		<invocation>
+			<modalpopup>
+				<windowsize>medium</windowsize> <!-- removedialog -->
+				<refreshparentwindow>onok</refreshparentwindow> <!-- onDelete -->
+			</modalpopup>
+		</invocation>		 
+	</action>
+	
+	<action id="changeprocessed_document">
+		<desc>
+			Change Processed document action
+		</desc>
+		<params>
+			<param name="objectId" required="true"/>
+		</params> 
+		<preconditions>
+		<!--	<precondition class="com.documentum.web.formext.action.RolePrecondition">
+				<role>erms_enable_soft_delete</role>
+			</precondition> -->
+			<!-- <precondition class="com.cosd.greenbuild.calwin.web.actions.ChangeProcessedDocumentAction"></precondition> -->
+			<precondition class="com.cosd.greenbuild.calwin.web.actions.EditIndexFieldsAction"></precondition>
+		</preconditions>	
+
+		<execution class="com.documentum.web.formext.action.LaunchComponent">
+			<component>changecasestatuscomponent</component>
+			<container>multiargdialogcontainer</container>		
+		</execution>
+
+		<invocation>
+			<modalpopup>
+				<windowsize>medium</windowsize>
+				<refreshparentwindow>onok</refreshparentwindow> <!-- onDelete -->
+			</modalpopup>
+		</invocation>		 
+	</action>
+
+	<action id="changecasepersons_document">
+		<desc>
+			Change Case Persons document action
+		</desc>
+		<params>
+			<param name="objectId" required="true"/>
+			<param name="case_number" required="false"/>
+		</params> 
+		<preconditions>
+		<!--	<precondition class="com.documentum.web.formext.action.RolePrecondition">
+				<role>erms_enable_soft_delete</role>
+			</precondition> -->
+			<!-- <precondition class="com.cosd.greenbuild.calwin.web.actions.ChangeCasePersonsDocumentAction"></precondition> -->
+			<precondition class="com.cosd.greenbuild.calwin.web.actions.EditIndexFieldsAction"></precondition>
+		</preconditions>	
+
+		<execution class="com.documentum.web.formext.action.LaunchComponent">
+			<component>changecasepersonsdoccomponent</component>
+			<container>changecasepersonsdoccontainer</container>		
+		</execution>
+
+		<invocation>
+			<modalpopup>
+				<windowsize>large</windowsize>
+				<refreshparentwindow>onok</refreshparentwindow> <!-- onDelete -->
+			</modalpopup>
+		</invocation>		 
+	</action>	
+	
+		<action id="soms_mashup_content">
+			<desc>
+				Request CTS webservice and pass all objects selected/entire and perform
+				mashup
+         </desc>
+			<params>
+				<param name="objectId" required="true" />
+				<param name="requestType" required="false" />
+				<param name="objectName" required="false" />
+			</params>
+			<!-- <preconditions>
+				<precondition class="com.cosd.greenbuild.calwin.web.actions.MashupAction"></precondition>
+			</preconditions> -->
+			<execution class="com.cosd.greenbuild.calwin.web.actions.MashupAction"></execution>
+		</action>
+		
+		<action id="soms_merge_selected_documents">
+			<desc>
+				Used to merge selected documents. 
+         </desc>
+			<params>
+				<param name="objectId" required="true" />
+				<param name="objectName" required="false" />
+			</params>
+			<preconditions>
+				<precondition class="com.cosd.greenbuild.calwin.web.actions.MergeActionPreCondition"></precondition>
+			</preconditions>
+			<execution class="com.cosd.greenbuild.calwin.web.actions.MergeActionPreCondition"></execution>
+		</action>
+		
+		<action id="exportWithoutPolicyBKUP">
+			<params>
+				<param name="objectId" required="true" />
+			</params>
+			<execution class="com.cosd.greenbuild.calwin.web.actions.ThirdPartyView"/>
+		</action>
+		
+	<action id="exportWithoutPolicy">
+		<params>
+			<param name="objectId" required="true"/>
+		</params>
+				<preconditions>
+		<!--	<precondition class="com.documentum.web.formext.action.RolePrecondition">
+				<role>erms_enable_soft_delete</role>
+			</precondition> -->
+			<!-- <precondition class="com.cosd.greenbuild.calwin.web.actions.ChangeProcessedDocumentAction"></precondition> -->
+			<precondition class="com.cosd.greenbuild.calwin.web.actions.ExportWithoutPolicyAction">
+					<!--
+						// only show to users in these roles 
+						//	comma-separated in this order: <role, case_type, case_confidentiality>
+					-->
+				<role>calwin_export_eligibility,eligibility,non-secured</role>
+				<role>calwin_export_eligibility_conf,eligibility,secured</role>
+				<role>calwin_export_adoption,adoption,non-secured</role>
+				<role>calwin_export_adoption_conf,adoption,secured</role>
+				<role>calwin_export_fosterkingap,fosterkingap,non-secured</role>
+				<role>calwin_export_fosterkingap_conf,fosterkingap,secured</role>
+			</precondition>
+		</preconditions>
+		<execution class="com.cosd.greenbuild.calwin.web.actions.ExportWithoutPolicyAction"></execution>
+		<!-- <execution class="com.documentum.web.formext.action.LaunchComponent">
+			<component>docdownloadpromptcomponent</component>
+			<container>docdownloadpromptcontainer</container>		
+		</execution>
+		<invocation>
+			<modalpopup>
+				<windowsize>medium</windowsize>
+				<refreshparentwindow>onok</refreshparentwindow>
+			</modalpopup>
+		</invocation> -->		 
+	</action>
+	
+		<action id="PerformMashupAndExportWithoutPolicy">
+			<params>
+				<param name="objectId" required="true" />
+			</params>
+		<execution class="com.documentum.web.formext.action.LaunchComponent">
+			<component>docdownloadpromptcomponent</component> <!-- cosdgetcontent_msdoc -->
+			<container>docdownloadpromptcontainer</container>		
+		</execution>
+		<invocation>
+			<modalpopup>
+				<windowsize>medium</windowsize>
+				<refreshparentwindow>onok</refreshparentwindow>
+			</modalpopup>
+		</invocation>		 
+		</action>
+	
+		
+		<!--
+			action to launch export component which does not show 'Export
+			Successful' message, which works around an IE7 browser crash bug
+		-->
+		<action id="exportNoMessage"
+			extends="export:/webcomponent/config/actions/dm_message_archive_actions.xml">
+			<execution
+				class="com.documentum.web.formext.action.LaunchComponentWithPermitCheck">
+				<permit>read_permit</permit>
+				<component>export</component>
+				<container>exportNoMessageContainer</container>
+				<arguments>
+					<argument name="isIgnoreDescendents" value="true" />
+				</arguments>
+			</execution>
+		</action>
+		
+		<action id="COSDGetContent">
+			<params>
+				<param name="objectId" required="true" />
+				<param name="format" required="false" />
+				<param name="pageNumber" required="false" />
+				<param name="pageModifier" required="false" />
+				<param name="resultMSG" required="false" />
+			</params>
+			<execution class="com.documentum.web.formext.action.LaunchComponent">
+				<component>getcontent_msdoc</component>
+			</execution>
+		</action>
+		
+		
+		<action id="delete">
+         <desc>
+            Deletes one or more objects. The user must have a role of
+            contributor. In addition, the user must have DELETE_PERMIT
+            access (valid values: DELETE_PERMIT | WRITE_PERMIT |
+            VERSION_PERMIT | RELATE_PERMIT | READ_PERMIT | BROWSE_PERMIT |
+            NONE_PERMIT).
+         </desc>
+         <params>
+            <param name="objectId" required="true"/>
+            <param name="folderId" required="false"/>
+            <param name="lockOwner" required="false"/>
+            <param name="ownerName" required="false"/>
+         </params>
+         <preconditions>
+            <precondition class="com.cosd.greenbuild.calwin.web.actions.DeleteDocPrecondition">
+            </precondition>
+            <!-- <precondition class="com.documentum.web.formext.action.RolePrecondition">
+               <role>contributor</role>
+            </precondition> -->
+         </preconditions>
+         <execution class="com.documentum.web.formext.action.LaunchComponent">
+            <dynamicfilter class="com.documentum.web.formext.action.LaunchComponentFilter">
+               <option>
+                  <criteria>
+                     <criterion name="ismessagearchiveattachment" value="true" evaluatorclass="com.documentum.webcomponent.library.messagearchive.MessageArchiveAttachEvaluator"/>
+                  </criteria>
+                  <selection>
+                     <component>informinvalidactionformessagearchiveattach</component>
+                  </selection>
+               </option>
+               <option>
+                  <criteria>
+                  </criteria>
+                  <selection>
+                     <container>combocontainer</container>
+                  </selection>
+               </option>
+            </dynamicfilter>
+         </execution>
+         <invocation>
+            <modalpopup>
+               <windowsize>medium</windowsize>
+               <refreshparentwindow>onok</refreshparentwindow>
+            </modalpopup>
+         </invocation>
+      </action>
+      
+      
+    <!-- <action id="calwinimport">
+         <desc>
+            Imports an object from the local file system to the repository.
+            The user must have a contributor role. The permit value
+            folder_link_permit performs a check for write permissions on
+            the folder when folder security is enabled.
+         </desc>
+         <params>
+            <param name="objectId" required="false"/>
+            <param name="objectName" required="false"/>
+            <param name="ownerName" required="false"/>
+            <param name="docbaseType" required="false"/>
+            <param name="baseDocbaseType" required="false"/>
+            <param name="filePath" required="false"/>
+            <param name="parentPath" required="false"/>
+            <param name="isDirectory" required="false"/>
+            <param name="format" required="false"/>
+            <param name="componentArgs" required="false"/>
+            <param name="component" required="false"/>
+         </params>
+		<execution class="com.documentum.web.formext.action.LaunchComponent">
+			<component>calwinimport</component>
+			<container>calwinimportcontainer</container>		
+		</execution>
+         <invocation>
+            <modalpopup>
+               <windowsize>medium</windowsize>
+               <refreshparentwindow>onok</refreshparentwindow>
+            </modalpopup>
+         </invocation>
+      </action> -->
+      
+    
+   </scope>
+</config>

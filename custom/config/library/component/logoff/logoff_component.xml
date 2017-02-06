@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+ ******************************************************************************
+ *
+ * Confidential Property of Documentum, Inc.
+ * (c) Copyright Documentum, Inc. 2001.
+ * All Rights reserved.
+ * May not be used without prior written agreement
+ * signed by a Documentum corporate officer.
+ *
+ ******************************************************************************
+ *
+ * Project        Commodo
+ * File           logoff_component.xml
+ * Description
+ * Created on     May 9, 2003
+ * Tab width      3
+ *
+ ******************************************************************************
+ *
+ * PVCS Maintained Data
+ *
+ * Revision       $Revision: 3$
+ * Modified on    $Date: 1/2/2007 11:41:05 PM$
+ *
+ * Log at EOF
+ *
+ ******************************************************************************
+-->
+<config version="1.0">
+   <scope>
+      <component id="calwinsearchlogoff" extends="logoff:webtop/config/logoff_component.xml">
+		<class>com.cosd.greenbuild.calwin.web.library.logoff.CalwinLogoff</class>
+      </component>
+   </scope>
+</config>

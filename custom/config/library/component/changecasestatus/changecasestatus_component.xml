@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<config version='1.0'>
+   <scope>      
+      <component id="changecasestatuscomponent">
+         <params>
+             <param name="objectId" required="true"/>             
+         </params> 
+         <pages>
+	     <start>/custom/jsp/library/component/changecasestatus/changecasestatus.jsp</start>
+         </pages>
+         <class>com.cosd.greenbuild.calwin.web.library.changecasestatus.ChangeCaseStatusComponent</class> 
+         <nlsbundle>com.cosd.greenbuild.calwin.web.library.changecasestatus.COSDChangeCaseStatusNlsProp</nlsbundle>        
+      </component>      
+   </scope>
+</config>

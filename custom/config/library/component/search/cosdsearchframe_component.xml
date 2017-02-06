@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Confidential Property of Documentum, Inc.                             -->
+<!-- (c) Copyright Documentum, Inc. 2001.                                  -->
+<!-- All Rights reserved.                                                  -->
+<!-- May not be used without prior written agreement                       -->
+<!-- signed by a Documentum corporate officer.                             -->
+<!--                                                                       -->
+<!-- Component: COSDSearch                                                 -->
+<!-- Scope: None                                                           -->
+<!-- Revision    $revision$                                                -->
+<!-- Modified on $date$                                                    -->
+<config version="1.0">
+
+<scope>
+	<component id="cosdsearchframe">
+		<pages>
+			<start>/custom/jsp/library/component/search/cosdsearchframe.jsp</start>
+		</pages>
+		<class>com.cosd.greenbuild.calwin.web.library.search.CalwinSearchFrame</class>
+		<nlsbundle>com.cosd.greenbuild.calwin.web.library.search.COSDSimpleSearchFrame</nlsbundle>
+		<calwinsearchquery>
+			<!-- attributes that will be part of the select query. NOTE: WHERE clause conditions for each attribute, if applicable, need to be specified in the JS file directly -->
+			<calwinsearchattr>object_name,r_modify_date,r_object_id,r_object_type,r_lock_owner,owner_name,r_link_cnt,r_is_virtual_doc,r_content_size,a_content_type,i_is_reference,r_assembled_from_id,r_has_frzn_assembly,a_compound_architecture,i_is_replica,r_policy_id,new_document,case_no,received_date,category,sub_category,doc_type,data_month,provider_number,applicant_lname,applicant_mname,applicant_fname,applicant_suffix,dob,ssn,cin_no,cwin_no,scan_date,scan_location,scan_operator</calwinsearchattr>
+			<!-- object type on which the search is based -->
+			<calwinsearchtype>calwin_case_doc</calwinsearchtype>
+		</calwinsearchquery>
+	</component>
+</scope>
+		
+</config>

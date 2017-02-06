@@ -1,0 +1,23 @@
+package com.cosd.greenbuild.calwin.utils;
+
+import CalWINClient.CalWINClient;
+
+public class CalwinWSConfig {
+	
+	public CalWINClient CalwinWSInfo()
+	{
+		return new CalWINClient("ustlscosd300",
+	            "1526",
+	            "clwncisp2",
+	            "calwin_cis_iface", // dummytest_username
+	            "imed_abc_48785",
+	            "usfsin01.folsom.calwin.eds.com",
+	            "7232",
+	            "sdg01",
+	            "erms1234",
+	            "1234567890AB",
+	            "3C",
+	            "37");
+	}
+
+}

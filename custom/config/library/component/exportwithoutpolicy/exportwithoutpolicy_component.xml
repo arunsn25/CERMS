@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!--***************************************************************************-->
+<!-- Project   : COSD Greenbuild                                               -->                                        	       
+<!--***************************************************************************-->
+
+<config version='1.0'>
+   <scope>
+      <!-- Get content component definition -->
+      <component id="exportwithoutpolicy"> <!-- extends="getcontent:wdk/config/getcontent_component.xml" -->
+
+         <!-- Description (not NLS'd) -->
+         <desc>
+            Get content: Performs getContent streaming content in responce,
+            displaying login component is necessary.
+         </desc>
+
+         <params>
+            <param name='objectId' required='true'></param>
+            <param name='format' required='false'></param>
+            <param name='pageNumber' required='false'></param>
+            <param name='pageModifier' required='false'></param>
+            <!-- <param name='resultMSG' required='false'></param> -->
+         </params>
+
+         <pages>
+            <start>/exportnopolicydoc-download</start>
+         </pages>
+
+      </component>
+   </scope>
+</config>

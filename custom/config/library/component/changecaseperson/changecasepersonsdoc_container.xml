@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<config version='1.0'>
+   <scope>      
+      <component id="changecasepersonsdoccontainer" extends="multiargdialogcontainer:webcomponent/config/library/multiargdialogcontainer/multiargdialogcontainer_component.xml">
+          <pages>
+               <start>/custom/jsp/library/component/changecaseperson/changecasepersonscontainer.jsp</start>
+         </pages>
+         <class>com.cosd.greenbuild.calwin.web.library.changecasepersons.ChangeCasePersonsContainer</class>
+         <nlsbundle>com.cosd.greenbuild.calwin.web.library.changecasepersons.COSDChangeCasePersonsNlsProp</nlsbundle>        
+      </component>      
+   </scope>
+</config>

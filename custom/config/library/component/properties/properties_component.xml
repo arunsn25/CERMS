@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--***********************************************************************-->
+<!--                                                                       -->
+<!-- Confidential Property of Documentum, Inc.                             -->
+<!-- (c) Copyright Documentum, Inc. 2001.                                  -->
+<!-- All Rights reserved.                                                  -->
+<!-- May not be used without prior written agreement                       -->
+<!-- signed by a Documentum corporate officer.                             -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+<!--                                                                       -->
+<!-- Project        Component Library                                      -->
+<!-- Module         Properties                                             -->
+<!-- File           properties_component.xml                               -->
+<!-- Description    Generic Properties Component Definition                -->
+<!-- Created on     24 August 2001                                         -->
+<!-- Tab width      3                                                      -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+<!--                                                                       -->
+<!-- VCS Maintained Data                                                   -->
+<!--                                                                       -->
+<!-- Revision       $Revision: 18$                                          -->
+<!-- Modified on    $Date: 6/11/2008 5:31:55 PM$                            -->
+<!--                                                                       -->
+<!-- Log at EOF                                                            -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+<config version="1.0">
+   <!-- generic version with base functionality -->
+   <scope>
+      <component id="properties" extends="properties:webcomponent/config/library/properties/properties_component.xml">
+         <desc>
+            Extends the container component propertysheetcontainer and 
+            displays property sheets that show general information about the 
+            selected object, such as name, type, format and owner. The 
+            properties component contains attributes, history, and 
+            permissions. The properties component for dm_category objects 
+            extends this properties component. 
+         </desc>
+         <params>
+            <param name="component" required="true"/>
+            <param name="objectId" required="true"/>
+         </params>
+         <pages>
+            <filter clientenv="not appintg">
+               <start>/webcomponent/library/properties/properties.jsp</start>
+            </filter>
+            <filter clientenv="appintg">
+               <start>/webcomponent/library/properties/appintgproperties.jsp</start>
+            </filter>
+         </pages>
+         <class>com.documentum.webcomponent.library.properties.Properties</class>
+         <nlsbundle>com.documentum.webcomponent.library.properties.PropertiesNlsProp</nlsbundle>
+         <failoverenabled>true</failoverenabled>
+         <contains>
+            <component>attributes</component>
+            <filter role="administrator">
+            	<component>permissions</component>
+            	<component>history</component> <!-- Arun Changes: scoped history to administrator role -->
+            </filter>
+         </contains>
+         <commitorder>
+            <component>permissions</component>
+         </commitorder>
+         <helpcontextid>properties</helpcontextid>
+         <setrepositoryfromobjectid>true</setrepositoryfromobjectid>
+      </component>
+   </scope>
+</config>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Developer's Comments
+# Parameters
+/* component                            (Required) The ID of the first contained 
+                                        component to be shown 
+*/
+/* objectId                             (Required) The ID of the object for 
+                                        which properties are to be shown 
+*/
+#
+# Elements
+/* <commitorder>                        Contains <component> elements that 
+                                        specify the order in which properties 
+                                        changes will be saved 
+*/
+/* <component>                          Idenitifies one or more contained 
+                                        components for which changes will be 
+                                        saved in the order the components are 
+                                        listed within <commitorder> 
+*/
+/* <setrepositoryfromobjectid>          Set to true to execute the query against 
+                                        the source repository. Affects reference 
+                                        and foreign objects. 
+*/
+#
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+      <!--
+      -->

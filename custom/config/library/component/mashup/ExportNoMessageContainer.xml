@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+ ******************************************************************************
+ *
+ * 1994, 2004 Documentum, a division of EMC Corporation.  All
+ * rights reserved. Confidential Property of Documentum, a
+ * division of EMC Corp.
+ *
+ ******************************************************************************
+ *
+ * Project        WDK 5.3
+ * Created on     Jul 19, 2004
+ * Tab width      3
+ *
+ ******************************************************************************
+ *
+ * PVCS Maintained Data
+ *
+ * Revision       $Revision: 7$
+ * Modified on    $Date: 5/26/2008 3:07:01 PM$
+ *
+ * Log at EOF
+ *
+ ******************************************************************************
+-->
+<config version="1.0">
+   <scope type="dm_sysobject">
+      <component id="exportNoMessageContainer" extends="combocontainer:wdk/config/combocontainer_component.xml">
+          <desc>
+            This is a WDK exportcontainer component. It is used to export
+            dm_sysobjects and dmr_content objects from the repository to the
+            client file system. Export of multiple objects creates one export
+            container and an inner export component instance for each object.
+         </desc>
+         <ucfrequired>
+            <events>
+               <event name="onInit" enabled="false" />
+            </events>
+         </ucfrequired>
+         <pages>
+            <start>/wdk/container/combocontainer.jsp</start>
+            <autocommit>/wdk/container/comboautocommit.jsp</autocommit>
+            <selectfolder>/webcomponent/library/contenttransfer/export/selectDestFolder.jsp</selectfolder>
+            <getucfsession>/webcomponent/library/contenttransfer/export/getUCFSession.jsp</getucfsession>
+         </pages>
+         <class>com.cosd.greenbuild.calwin.web.library.mashup.ExportNoMessageContainer</class>
+         <nlsbundle>com.documentum.webcomponent.library.contenttransfer.export.ExportContainerNlsProp</nlsbundle>
+         <service>
+            <service-class>com.documentum.web.contentxfer.impl.ExportService</service-class>
+            <transport-class>com.documentum.web.contentxfer.ucf.UcfContentTransport</transport-class>
+            <post-processor-class>
+               com.documentum.webcomponent.library.messagearchive.LaunchConverter
+            </post-processor-class>
+         </service>
+         <bindingcomponentversion>latest</bindingcomponentversion>
+      </component>
+   </scope>
+</config>

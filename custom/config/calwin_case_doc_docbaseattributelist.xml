@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--*********************************************************************** -->
+<!-- Project	:       GDMS                                                -->
+<!-- File		: 		pfe_sop_docbaseattributelist.xml					-->
+<!-- Description: 		Configuration of attributes for doc type 			-->
+<!--					pfe_sop   											-->
+<!-- Created on	:     	16-March-2007                                       -->
+<!-- Author 	:       Ramana Bhavanasi  - IBM Global Business Services    -->
+<!-- *********************************************************************	-->
+<!-- ********************************************************************
+	 Updated	: 15-Feb-2008
+	 Updated By	: JSG
+	 Description: Added attributes pfe_xm_p_vendor,pfe_xm_p_vendor_reporting
+ 	 Release	: 3.0	 
+************************************************************************* -->
+
+
+<config version='1.0'>
+
+
+<!-- ************************************************************************************************************
+                                        Begin xmLabeling Configuration Instructions
+*****************************************************************************************************************
+Update the <scope> tag and set the type attribute equal to the xmLabeling document type that this configuration applies to.  The following are a few example scope configurations:
+
+    <scope type="pfe_sd_protocol_study">
+
+************************************************************************************************************
+                                        End xmLabeling Configuration Instructions
+***************************************************************************************************************** -->
+
+	<scope type="cosd_doc">
+	
+	
+			<attributelist id="import" extends="attributes:webcomponent/config/library/attributes_dm_document_docbaseattributelist.xml">
+
+
+			<desc>
+            USPI attribute list: Generates all attributes of a
+            particular DocbaseObject.  The is_hidden, category name, and
+            precedence inside a category can either be set in data dictionary
+            or config file.
+			</desc>
+
+			<data_dictionary_population>
+				<enable>false</enable>
+			</data_dictionary_population>
+			<category id="info">
+				<name>
+					<nlsid>MSG_INFO</nlsid>
+				</name>
+
+
+<!-- ************************************************************************************************************
+                                     Begin xmLabeling Configuration Instructions
+*****************************************************************************************************************
+The <attributes> tag defines the document type-specific properties to be displayed on the "2. Info" tab on the Create New Document screen.  Children <attribute> sub-tags are defined for each property to be displayed..  The order in which the attributes are displayed on the screen will be the same as the order in which the <attribute> sub-tags are included in this XML file.  The following is an example of how Trade Name and Language properties can be defined:
+
+     <attributes>
+         <attribute name="trade_name"/>
+         <attribute name="xm_language"/>
+     </attributes>
+
+******************************************************************************************************************
+                                      End xmLabeling Configuration Instructions
+***************************************************************************************************************** -->
+
+				<attributes>
+				    <attribute name="case_type"/>
+				    <attribute name="case_confidentiality"/>
+				</attributes>
+			</category>
+			<nlsbundle>com.documentum.web.formext.control.docbase.DocbaseAttributeListNlsProp</nlsbundle>
+		</attributelist>
+	</scope>
+</config>
+

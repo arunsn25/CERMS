@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<config version="1.0">
+   <scope> <!-- type='calwin_case_folder' -->
+   
+     <action id="calwinimport">
+         <desc>
+            Imports an object from the local file system to the repository.
+            The user must have a contributor role. The permit value
+            folder_link_permit performs a check for write permissions on
+            the folder when folder security is enabled.
+         </desc>
+         <params>
+            <param name="objectId" required="false"/>
+            <param name="objectName" required="false"/>
+            <param name="ownerName" required="false"/>
+            <param name="docbaseType" required="false"/>
+            <param name="baseDocbaseType" required="false"/>
+            <param name="filePath" required="false"/>
+            <param name="parentPath" required="false"/>
+            <param name="isDirectory" required="false"/>
+            <param name="format" required="false"/>
+            <param name="componentArgs" required="false"/>
+            <param name="component" required="false"/>
+         </params>
+		<execution class="com.documentum.web.formext.action.LaunchComponent">
+			<component>calwinimport</component>
+			<container>calwinimportcontainer</container>		
+		</execution>
+         <invocation>
+            <modalpopup>
+               <windowsize>large</windowsize>
+               <refreshparentwindow>onok</refreshparentwindow>
+            </modalpopup>
+         </invocation>
+      </action>
+    
+   </scope>
+</config>

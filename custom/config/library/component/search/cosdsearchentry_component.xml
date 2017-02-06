@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--***********************************************************************-->
+<!--                                                                       -->
+<!-- Confidential Property of Documentum, Inc.                             -->
+<!-- (c) Copyright Documentum, Inc. 2001.                                  -->
+<!-- All Rights reserved.                                                  -->
+<!-- May not be used without prior written agreement                       -->
+<!-- signed by a Documentum corporate officer.                             -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+<!--                                                                       -->
+<!-- Project        CERMS                                                 -->
+<!-- Module         search                                                   -->
+<!-- File           searchentry_component.xml                                     -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+<config>
+   <scope>
+      <component id="cosdsearchentry">
+         <pages>
+            <start>/custom/jsp/library/component/search/cosdsearchentry.jsp</start>
+         </pages>
+         <class>com.documentum.web.formext.component.Component</class>
+         <nlsbundle>com.cosd.greenbuild.calwin.web.library.search.COSDSearchEntryNlsProp</nlsbundle>
+      </component>
+   </scope>
+</config>

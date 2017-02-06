@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<!--***************************************************************************-->
+<!-- Project   : GDMS                                                      	   -->
+<!-- Description: Assign the servlet (msdoc-download)  of export menu invokes  -->
+<!-- Author	   : Dan Li(lid19), Yulei Yang								   	   -->
+<!-- Created on: 27-MAR-2010                                         	       -->
+<!--***************************************************************************-->
+
+<config version='1.0'>
+   <scope>
+      <!-- Get content component definition -->
+      <component id="docdownloadpromptcomponent">
+
+         <params>
+            <param name='objectId' required='true'></param>
+            <param name='format' required='false'></param>
+            <param name='pageNumber' required='false'></param>
+            <param name='pageModifier' required='false'></param>
+            <!-- <param name='resultMSG' required='false'></param> -->
+         </params>
+
+         <pages>
+            <start>/custom/jsp/library/component/docdownloadprompt/downloadprompt.jsp</start>
+         </pages>
+		<class>com.cosd.greenbuild.calwin.web.library.docdownloadprompt.DownloadPrompt</class>
+		<nlsbundle>com.cosd.greenbuild.calwin.web.library.docdownloadprompt.DownloadPromptNlsProp</nlsbundle>
+      </component>
+   </scope>
+</config>

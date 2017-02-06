@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--***********************************************************************-->
+<!--                                                                       -->
+<!-- Confidential Property of Documentum, Inc.                             -->
+<!-- (c) Copyright Documentum, Inc. 2001.                                  -->
+<!-- All Rights reserved.                                                  -->
+<!-- May not be used without prior written agreement                       -->
+<!-- signed by a Documentum corporate officer.                             -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+<!--                                                                       -->
+<!-- Project        Web Development Kit                                    -->
+<!-- Module         Container                                              -->
+<!-- File           dialogcontainer_component.xml                          -->
+<!-- Description    Dialog Container Component Definition                  -->
+<!-- Created on     24 August 2001                                         -->
+<!-- Tab width      3                                                      -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+<!--                                                                       -->
+<!-- VCS Maintained Data                                                   -->
+<!--                                                                       -->
+<!-- Revision       $Revision: 11$                                           -->
+<!-- Modified on    $Date: 1/2/2007 11:40:49 PM$                            -->
+<!--                                                                       -->
+<!-- Log at EOF                                                            -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+<config version="1.0">
+   <scope>
+      <component id="docdownloadpromptcontainer" extends="dialogcontainer:wdk/config/dialogcontainer_component.xml">
+      <!-- <component id="docdownloadpromptcontainer" extends="multiargdialogcontainer:webcomponent/config/library/multiargdialogcontainer/multiargdialogcontainer_component.xml"> -->
+         <params>
+            <param name="component" required="true" />
+            <!-- <param name="componentArgs" required="true" /> --> 
+            <param name="title" required="false" />
+            <param name="subTitle" required="false" />
+            <param name='objectId' required='true'></param>
+            <param name='format' required='false'></param>
+            <param name='pageNumber' required='false'></param>
+            <param name='pageModifier' required='false'></param>
+            <!-- <param name='resultMSG' required='false'></param> -->
+         </params>
+         <pages>
+            <filter clientenv="not appintg">
+               <start>/custom/jsp/library/component/docdownloadprompt/docdownloadpromptcontainer.jsp</start>
+            </filter>
+            <filter clientenv="appintg">
+               <start>/wdk/container/appintgdialogcontainer.jsp</start>
+            </filter>
+         </pages>
+         <class>com.cosd.greenbuild.calwin.web.library.docdownloadprompt.DownloadPromptContainer</class>
+      </component>
+   </scope>
+</config>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Developer's Comments
+# Parameters
+/* component                            (Required) The contained component. Set 
+                                        the requiresVisit attribute to true to 
+                                        require the component to be visited 
+                                        before an OK button is displayed. 
+*/
+/* title                                (Optional) TBD
+*/
+/* subTitle                             (Optional) TBD
+*/
+#
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->

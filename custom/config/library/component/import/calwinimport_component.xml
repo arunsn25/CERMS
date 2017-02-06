@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--
+ ******************************************************************************
+ *
+ * 1994, 2004 Documentum, a division of EMC Corporation.  All 
+ * rights reserved. Confidential Property of Documentum, a 
+ * division of EMC Corp.
+ *
+ ******************************************************************************
+ *
+ * Project        WDK 5.3
+ * Description
+ * Created on     July 22, 2004
+ * Tab width      3
+ *
+ ******************************************************************************
+ *
+ * PVCS Maintained Data
+ *
+ * Revision       $Revision: 18$
+ * Modified on    $Date: 9/22/2008 12:34:41 PM$
+ *
+ ******************************************************************************
+-->
+<config version="1.0">
+   <scope>
+      <component id="calwinimport">
+         <desc>
+            This is the WDK import component. Imports objects from the
+            client file system to the repository. The component must run 
+            within the importcontainer or httpimportcontainer. 
+         </desc>
+         <ucfrequired/>
+         <params>
+            <param name="objectId" required="false"/>
+            <param name="filenameWithPath" required="true"/>
+            <param name="localFilePath" required="false"/>
+            <param name="parentPath" required="false"/>
+            <param name="docbaseType" required="false"/>
+            <param name="isDirectory" required="false"/>
+            <param name="baseDocbaseType" required="false"/>
+            <param name="format" required="false"/>
+            <param name="defaultAttributesValues" required="false"/>
+            <param name="oleScanEnable" required="false"/>
+         </params>
+         <ignoreNullAttributeValue>true</ignoreNullAttributeValue>
+         <pages>
+            <!-- <start>/webcomponent/library/contenttransfer/importcontent/importContent.jsp</start> -->
+			<start>/custom/jsp/library/component/contentxfer/importcontent/importContent.jsp</start>
+			<!-- <start>/custom/jsp/library/component/contentxfer/importcontent/fileselection.jsp</start> -->
+            <folder>/webcomponent/library/contenttransfer/importcontent/importFolder.jsp</folder>
+         </pages>
+         <!-- <class>com.documentum.webcomponent.library.contenttransfer.importcontent.ImportContent</class> -->
+		 <class>com.cosd.greenbuild.calwin.web.library.contentxfer.importcontent.CalwinImportContent</class>
+         <nlsbundle>com.cosd.greenbuild.calwin.web.library.contentxfer.importcontent.ImportContentNlsProp</nlsbundle>
+         <helpcontextid>import</helpcontextid>
+         <service>
+            <processor-class>com.documentum.webcomponent.library.contenttransfer.importcontent.ImportProcessor</processor-class>
+         </service>
+         <init-controls>
+            <control name="xmlCategoryListLabel" type="com.documentum.web.form.control.Label">
+               <init-property>
+                  <property-name>enabled</property-name>
+                  <property-value>true</property-value>
+               </init-property>
+               <init-property>
+                  <property-name>visible</property-name>
+                  <property-value>true</property-value>
+               </init-property>
+            </control>
+            <control name="xmlCategoryList" type="com.documentum.web.form.control.databound.DataDropDownList">
+               <init-property>
+                  <property-name>enabled</property-name>
+                  <property-value>false</property-value>
+               </init-property>
+               <init-property>
+                  <property-name>visible</property-name>
+                  <property-value>false</property-value>
+               </init-property>
+            </control>
+            <control name="bocswriteoption" type="com.documentum.web.form.control.Panel">
+            </control>
+         </init-controls>
+         <document-docbase-base-type>calwin_case_doc</document-docbase-base-type>
+         <document-docbase-type>calwin_case_doc</document-docbase-type>
+         <docbase-type-mappings>
+            <docbase-type-mapping>
+               <format>msg</format>
+               <type>dm_email_message</type>
+            </docbase-type-mapping>
+         </docbase-type-mappings>
+         <folder-docbase-type>dm_folder</folder-docbase-type>
+         
+         <document_filter>
+            <preset_item id="type_filter">
+               <selection>
+                  <entries>
+                     <entry></entry>
+                  </entries>
+               </selection>
+            </preset_item>
+         </document_filter>
+
+         <folder_filter>
+            <preset_item id="type_filter">
+               <selection>
+                  <entries>
+                     <entry></entry>
+                  </entries>
+               </selection>
+            </preset_item>
+         </folder_filter>
+
+         <preset_item id="format_filter">
+            <selection>
+               <entries>
+                  <entry></entry>
+               </entries>
+            </selection>
+         </preset_item>
+
+         <preset_item id='autoattributes'>
+            <attributes>
+               <attribute>
+                  <name></name>
+                  <values>
+                     <value></value>
+                  </values>
+               </attribute>
+            </attributes>
+         </preset_item>
+
+        <preset_item id="acl_filter">
+            <selection>
+               <entries>
+                  <entry></entry>
+               </entries>
+            </selection>
+         </preset_item>         
+         
+         <preserve-file-extension>true</preserve-file-extension>
+     </component>
+   </scope>
+</config>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Developer's Comments
+# Parameters
+/* baseDocbaseType                      (Optional) Parent object_type of the 
+                                        object_type of the object to be 
+                                        imported. 
+*/
+/* defaultAttributesValues              (Optional) Default attribute values for 
+                                        the object that is to be imported. 
+*/
+/* docbaseType                          (Optional) object_type that the file is 
+                                        to be imported as. 
+*/
+/* filenameWithPath                     (Required) True to display the file path 
+                                        with the file name 
+*/
+/* format                               (Optional) dm_format of the object to be 
+                                        imported. 
+*/
+/* isDirectory                          (Optional) Boolean that indicates 
+                                        whether the object being imported is a 
+                                        directory. 
+*/
+/* localFilePath                        (Optional) Full path to the file to be 
+                                        imported. 
+*/
+/* objectId                             (Required) ID of the target folder for 
+                                        import 
+*/
+/* parentPath                           (Optional) Repository path into which 
+                                        the file is imported. 
+*/
+#
+# Elements
+/* <ucfrequired>                        If this element is present, then the 
+                                        component requires UCF to be installed. 
+*/
+/* <processor-class>                    Specifies the fully qualified class name 
+                                        for the class that implements the 
+                                        processor. Value is: 
+                                        com.documentum.web.contentxfer.impl.
+                                        ImportProcessor 
+*/
+/* <init-controls>                      Initalizes values of the 
+                                        xmlCategoryListLabel label control and 
+                                        the xmlCategoryList datadropdownlist 
+                                        control 
+*/
+/* <document-docbase-base-type>         Default base for retrieving a type list 
+                                        to be displayed on import. Default: 
+                                        dm_document 
+*/
+/* <document-docbase-type>              Default selected object type of an 
+                                        object to be imported. Must be the type 
+                                        or subtype of 
+                                        <document-docbase-base-type>. 
+                                        Default: dm_document 
+*/
+/* <folder-docbase-type>                Default folder type of a folder to be 
+                                        imported 
+*/
+/* <preserve-file-extension>            Specify True to keep the file extension 
+                                        as part of the object name when imported 
+                                        into the repository; False to strip the 
+                                        file extension from the object name. 
+*/
+/* <preset_item>                        TBD.
+*/
+#
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->

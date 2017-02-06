@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--***********************************************************************-->
+<!--                                                                       -->
+<!-- Confidential Property of Documentum, Inc.                             -->
+<!-- (c) Copyright Documentum, Inc. 2001.                                  -->
+<!-- All Rights reserved.                                                  -->
+<!-- May not be used without prior written agreement                       -->
+<!-- signed by a Documentum corporate officer.                             -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+<!--                                                                       -->
+<!-- Project        Component Library                                      -->
+<!-- Module         Delete                                                 -->
+<!-- File           deletedocument_component.xml                           -->
+<!-- Description    Delete Document Component Definition                   -->
+<!-- Created on     24 August 2001                                         -->
+<!-- Tab width      3                                                      -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+<!--                                                                       -->
+<!-- VCS Maintained Data                                                   -->
+<!--                                                                       -->
+<!-- Revision       $Revision: 7$                                           -->
+<!-- Modified on    $Date: 2/27/2007 7:13:30 AM$                            -->
+<!--                                                                       -->
+<!-- Log at EOF                                                            -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+<config version="1.0">
+   <scope type="calwin_case_doc">
+      <component id="delete" extends="delete:webcomponent/config/library/delete/deletedocument_component.xml">
+         <pages>
+            <start>/custom/jsp/library/component/delete/deleteDocument.jsp</start>
+         </pages>
+		 <nlsbundle>com.cosd.greenbuild.calwin.web.library.delete.DeleteNlsProp</nlsbundle>
+      </component>
+   </scope>
+</config>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Developer's Comments
+# Parameters
+/* folderId                             (Optional) ID of the parent folder of 
+                                        the file or folder that is to be 
+                                        deleted. Applies only to dm_folder and 
+                                        dm_sysobject types. 
+*/
+/* objectId                             (Required) ID of the object to be 
+                                        deleted. Applies to all types. 
+*/
+#
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->

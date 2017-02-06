@@ -1,0 +1,22 @@
+<config version="1.0">
+   <scope>
+      <component id="MashupTypeContainer" extends="dialogcontainer:wdk/config/dialogcontainer_component.xml">
+         <params>
+             <param name="objectId" required="true"/>             
+             <param name="component" required="true"/>             
+         </params> 
+         <class>com.cosd.greenbuild.calwin.web.library.mashup.MashupTypeContainer</class>
+         <pages>
+             <start>/custom/jsp/library/component/mashup/mashupTypeContainer.jsp</start>
+         </pages>
+         <!-- 
+         <contains>
+           <component>ERMSMashupTypeComponent</component>
+         </contains>
+          -->
+      </component>
+   </scope>
+</config>
+<!-- 
+erms_mashup_save_pwd
+ -->

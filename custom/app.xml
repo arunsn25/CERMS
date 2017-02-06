@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<config>
+   <scope>
+		<application extends="webtop/app.xml">
+			<malicious_file_extensions_list>
+              <extensions_list>afp,ai,aifc,aiff,asf,asm,asp,asx,atd,att,au,avi,bas,bin,bk,bmp,cfm,cfml,cgi,cgm,chm,class,cr2,crw,css,ctm,cvs,daf,dar,dcm,dec,dgn,dib,dita,ditamap,dll,dng,doc,docm,docx,dot,dotm,dotx,drw,dtd,dv,dwf,dwg,dwt,dxf,eap,elm,emcmf,emf,eml,emz,ent,eps,f4v,fdf,fla,flv,fm,fos,fp3,fp4,fpx,frm,gif,gxf,hdml,hhf,htm,idl,incd,incx,indd,jar,java,jhtml,jnt,jp2,jpg,js,jsp,lbi,lxf,mak,map,mcr,mdb,mde,mht,mif,mil,mmap,mmas,mmat,mod,mov,mp3,mp4,mpc,mpg,mpg2,mpp,mps,mpt,mpv,mpw,msg,mss,mxf,oft,one,onetoc,opml,ov,pcd,pcl,pct,pcx,pen,pgm,php,php3,phtml,pm6,png,pnm,pot,potm,potx,ppm,pps,ppsm,ppsx,ppt,pptm,pptx,pre,pro,prt,ps,psd,ptd,pub,qxd,qxp,ra,ram,ras,rf10,rf9,rft,rle,rls,rlx,rm,rmh,rmm,rnx,rtf,rv,sam,scm,sct,sgi,sgm,shtml,sl,smil,so,soc,spl,spml,stm,sun,svg,swf,tbr,tga,tif,txt,ump,voc,vrf,vsd,vss,vst,vsw,wav,wax,wbmp,wk4,wma,wmf,wmv,wpd,wri,wrl,wsdl,wvx,xfdf,xls,xlsb,xlsm,xlsx,xlt,xltm,xltx,xlw,xmi,xml,xsd,xsf,xsl,xsn,xtg</extensions_list>
+          </malicious_file_extensions_list>
+
+
+<authentication>
+<domain></domain>
+<docbase>HHSA_CALWIN</docbase>
+<service_class>com.documentum.web.formext.session.AuthenticationService</service_class>
+</authentication>
+		  <modalpopup>
+            <filter clientenv='webbrowser'>
+               <enabled>false</enabled>
+            </filter>
+
+            <!-- List of action invocation post processors -->
+            <actioninvocationpostprocessors>
+               <!--
+                  To modify the list of post processors, use the config service modification syntax.
+                  The post processor element should follow this syntax:
+                  <postprocessor id="uniqueId" action="yourAction" class="YourActionInvocationPostProcessor"/>
+               -->
+               <postprocessor id="viewvdm" action="view" class="com.documentum.web.formext.action.ViewActionInvocationPostProcessor"/>
+               <postprocessor id="foreignobj" class="com.documentum.web.formext.action.ForeignObjActionInvocationPostProcessor"/>
+            </actioninvocationpostprocessors>
+         </modalpopup>
+			<presets>
+				<!-- Enable/Disable Presets -->
+				<filter clientenv='not portal'>
+							   <enabled>true</enabled>
+				</filter>
+				<filter clientenv='portal'>
+							   <enabled>false</enabled>
+				</filter>
+				<!-- Version of preset package definitions (PresetVersion_x.x is r_version_label 
+							   value of preset defs) -->
+				<version>1.4</version>
+				<!-- Repository folder containing preset package definitions and preset 
+							   packages -->
+				<repository_path>/Resources/Registry/Presets/Webtop
+				</repository_path>
+				<!-- If repository is blank, the dfc global registry repository will 
+							   be assumed as the preset repository -->
+				<repository>GLOBAL_REP</repository>
+				<!-- Encrypted password for default preset user "dmc_wdk_presets_owner" -->
+				<!-- To create an encrypted password, execute the following command at 
+							   a command -->
+				<!-- prompt: -->
+				<!-- java com.documentum.web.formext.session.TrustedAuthenticatorTool 
+							   <password> -->
+				<!-- The utility sends the encrypted password to the standard output -->
+				<password>AAw6ek6JNGo=</password>
+				<!-- Interval to check for preset package changes in repository -->
+				<!-- Each execution is scheduled relative to the actual execution time 
+							   of the previous execution -->
+				<refresh_period_seconds>3600</refresh_period_seconds>
+				<!-- Preset scope definition names may optionally be mapped to a different 
+							   IQualifier scope name -->
+				<scope_name_mappings>
+							   <scope_name_mapping>
+											  <preset_scope_definition_name>group</preset_scope_definition_name>
+											  <qualifier_scope_name>role</qualifier_scope_name>
+							   </scope_name_mapping>
+				</scope_name_mappings>
+				<!-- Enable/Disable location scope cascading to subfolders. -->
+				<!-- If enabled, the preset rules applied to a location scope will be 
+							   applied to all subfolders under it -->
+				<location-scope-cascading>true</location-scope-cascading>
+			</presets>
+			<preferencesrepository>
+				<filter clientenv='not portal'>
+							   <!-- Repository folder for storing user preferences in App server environment -->
+							   <repository_path>/Resources/Registry/Preferences/Webtop
+							   </repository_path>
+				</filter>
+				<filter clientenv='portal'>
+							   <!-- Repository folder for storing portal user preferences in Portal 
+											  server environment -->
+							   <repository_path>/Resources/Registry/Preferences/Webtop/WDKPortlets
+							   </repository_path>
+				</filter>
+				<abort_on_repository_unreachable>false
+				</abort_on_repository_unreachable>
+				<!-- If repository is blank, the dfc global registry repository will 
+							   be assumed as the preference docbase -->
+				<repository>GLOBAL_REP</repository>
+				<!-- Encrypted password for default preference user "dmc_wdk_preferences_owner" -->
+				<!-- To create an encrypted password, execute the following command at 
+							   a command -->
+				<!-- prompt: -->
+				<!-- java com.documentum.web.formext.session.TrustedAuthenticatorTool 
+							   <password> -->
+				<!-- The utility sends the encrypted password to the standard output -->
+				<password>AAw6ek6JNGo=</password>
+				<!-- List of preferences which are 'always' stored in a cookie -->
+				<non_repository_preferences>
+							   <preference>component[id=login].username</preference>
+							   <preference>component[id=login].showoptions</preference>
+							   <preference>credentials_docbase</preference>
+							   <preference>credentials_username</preference>
+							   <preference>credentials_password</preference>
+							   <preference>credentials_domain</preference>
+							   <preference>application.authentication.docbase</preference>
+							   <preference>application.authentication.docbroker</preference>
+							   <preference>application.authentication.domain</preference>
+							   <preference>fileselectorLastDirectory</preference>
+							   <preference>application.language.default_locale</preference>
+				</non_repository_preferences>
+			</preferencesrepository>
+			<dragdrop>
+				<!-- drag and drop is turned on by default -->
+				<enabled>true</enabled>
+			 </dragdrop>
+
+			<plugins>
+				<!-- Documentum drag and drop and spell checkin active X plugin -->
+				<enhanced_plugin>
+				   <!-- plugins are turned on by default -->
+				   <enabled>true</enabled>
+				   <classid>759FD3DE-F0EF-4A76-909C-88CF840D4173</classid>
+				   <classid_x64>311C1772-ED67-4fdf-BC5C-7EF1342FE9A5</classid_x64>
+				   <min_version>6,8,0,001</min_version>
+				   <initial_user_state>false</initial_user_state>
+				</enhanced_plugin>
+			 </plugins>
+
+			 <security_support>
+
+                          <!-- CSRF token configuration. URL addressable actions configuration. Below configuration specifies whether WDK actions can be
+             invoked through URL or not.  If <enabled> has value true then all actions can be invoked through URL.
+             If false, then only actions specified under <allow-actions> are allowed. List of actions are delimited by
+              comma character.  The actions whitelisted in the allow-action can be again blocked through the action defintion
+              using url-addressable configuration.
+              In the action definition, If the configuration url-addressable-disabled is present, then the action will be
+              blocked. Otherwise the action can be invoked through URL.
+              This configuration is also used before executing action through component's processstartupaction.
+              -->
+             <url-addressable-actions>
+                <enabled>true</enabled>
+                <allow-actions>auditimagingaction,jumpToBrowserTreeLocation</allow-actions>
+             </url-addressable-actions>
+
+             <!-- CSRF token configuration.URL addressable components configuration. Below configuration specifies whether all WDK components
+           can be invoked through URL or not.  If <enabled> has value true then all components can be invoked through URL.
+          If false, then component's definition will be verified.
+          If component Definition has url-addressable-disabled tag, then the component cannot be invoked through URL.
+          Otherwise the component can be invoked through url
+          -->
+             <url-addressable-components>
+                <enabled>true</enabled>
+             </url-addressable-components>
+
+
+           <!-- To use secured cookies feature complete site (all pages) should be secured -->
+              <secured_cookies_for_https_only>
+                  <enabled>false</enabled>
+              </secured_cookies_for_https_only>
+
+              <frame_bursting>
+                  <enabled>false</enabled>
+              </frame_bursting>
+
+              <x_frame_option>
+                  <enabled>false</enabled>
+              </x_frame_option>
+
+              <!--
+              If secure vlink deployment is enabled[<enabled>true</enabled>],
+              vlink and webtop will communicate using HTTPSession.
+              Hence, they cannot be deployed as different web applications.
+              If secure vlink deployment is disabled[<enabled>false</enabled>],
+              vlink and webtop will communicate using HTTP(S) GET.
+              In this case, they can be deployed as different web applications in the application server.
+              -->
+              <secure_vlink>
+                  <enabled>false</enabled>
+              </secure_vlink>
+
+          </security_support>
+		</application>
+   </scope>
+</config>
+ 

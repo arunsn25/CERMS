@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<config version='1.0'>
+   <scope>      
+      <component id="removedoccomponent">
+         <params>
+             <param name="objectId" required="true"/>             
+         </params> 
+         <pages>
+	     <start>/custom/jsp/library/component/remove/removedoc.jsp</start>
+         </pages>
+         <class>com.cosd.greenbuild.calwin.web.library.remove.RemoveDocumentComponent</class> 
+         <nlsbundle>com.cosd.greenbuild.calwin.web.library.remove.COSDRemoveNlsProp</nlsbundle>        
+      </component>      
+   </scope>
+</config>

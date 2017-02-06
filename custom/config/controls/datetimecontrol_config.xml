@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--***********************************************************************-->
+<!--                                                                       -->
+<!-- Confidential Property of Documentum, Inc.                             -->
+<!-- (c) Copyright Documentum, Inc. 2001.                                  -->
+<!-- All Rights reserved.                                                  -->
+<!-- May not be used without prior written agreement                       -->
+<!-- signed by a Documentum corporate officer.                             -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+<!--                                                                       -->
+<!-- Project        WDK 5.3.x SP1                                          -->
+<!-- Module         DateControls                                           -->
+<!-- File           datetimecontrol_config.xml                             -->
+<!-- Description    DateControls default configuration                     -->
+<!-- Tab width      3                                                      -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+<!--                                                                       -->
+<!-- VCS Maintained Data                                                   -->
+<!--                                                                       -->
+<!-- Revision       $Revision: 3$                                           -->
+<!-- Modified on    $Date: 1/2/2007 11:40:48 PM$                            -->
+<!--                                                                       -->
+<!-- Log at EOF                                                            -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+<config version="1.0">
+   <scope>
+      <datetimecontrolconfig>
+         <dateinput>
+            <default-year-from>1997</default-year-from>
+            <default-year-to>2010</default-year-to>
+            <default_type>short</default_type> <!-- COSD - AS - 03-19-2013 - Changed from medium to short -->
+         </dateinput>
+         <datevalueformatter>
+            <default_type>short</default_type>
+         </datevalueformatter>
+         <datetime>
+            <default_type>medium</default_type>
+         </datetime>
+      </datetimecontrolconfig>
+   </scope>
+</config>
+

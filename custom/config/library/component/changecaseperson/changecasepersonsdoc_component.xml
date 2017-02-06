@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<config version='1.0'>
+   <scope>      
+      <component id="changecasepersonsdoccomponent">
+         <params>
+             <param name="objectId" required="true"/>
+             <param name="case_number" required="false"/>             
+         </params> 
+         <pages>
+	     <start>/custom/jsp/library/component/changecaseperson/changecasepersonsdoc.jsp</start>
+         </pages>
+         <class>com.cosd.greenbuild.calwin.web.library.changecasepersons.ChangeCasePersonsDocComponent</class> 
+         <nlsbundle>com.cosd.greenbuild.calwin.web.library.changecasepersons.COSDChangeCasePersonsNlsProp</nlsbundle>        
+      </component>      
+   </scope>
+</config>

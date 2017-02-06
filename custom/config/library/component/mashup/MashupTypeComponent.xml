@@ -1,0 +1,11 @@
+<config version="1.0">
+   <scope>
+      <component id="MashupTypeComponent">
+         <pages>
+            <start>/custom/jsp/library/component/mashup/mashupType.jsp</start>
+         </pages>
+         <class>com.cosd.greenbuild.calwin.web.library.mashup.MashupTypeComponent</class>
+         <nlsbundle>com.cosd.greenbuild.calwin.web.library.mashup.MashupProp</nlsbundle>
+      </component>
+   </scope>
+</config>

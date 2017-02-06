@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--***********************************************************************-->
+<!--                                                                       -->
+<!-- Confidential Property of Documentum, Inc.                             -->
+<!-- (c) Copyright Documentum, Inc. 2001.                                  -->
+<!-- All Rights reserved.                                                  -->
+<!-- May not be used without prior written agreement                       -->
+<!-- signed by a Documentum corporate officer.                             -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+<!--                                                                       -->
+<!-- Project        Web Development Kit                                    -->
+<!-- Module         Prompt                                                 -->
+<!-- File           prompt_component.xml                                   -->
+<!-- Description    Prompt Component Definition                            -->
+<!-- Created on     10th March 2001                                        -->
+<!-- Tab width      3                                                      -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+<!--                                                                       -->
+<!-- VCS Maintained Data                                                   -->
+<!--                                                                       -->
+<!-- Revision       $Revision: 7$                                           -->
+<!-- Modified on    $Date: 1/2/2007 11:41:12 PM$                           -->
+<!--                                                                       -->
+<!-- Log at EOF                                                            -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+<config version="1.0">
+   <scope>
+      <component id="cosdprompt">
+         <desc>
+            Provides the functionality of a message box. A prompt has a title, 
+            a message, and a selection of buttons: OK, Cancel, Continue, Yes, 
+            No, Yes to all, No to all, and Help, any combination of which can 
+            be displayed. There is also an optional icon and "Don't show this 
+            again" checkbox. The don't show again feature is enabled only when 
+            the prompt component is used within the combocontainer component. 
+         </desc>
+         <params>
+            <param name="button" required="true"/>
+            <param name="title"/>
+            <param name="message"/>
+            <param name="icon"/>
+            <param name="dontshowagain"/>
+         </params>
+         <pages>
+            <filter clientenv="not appintg">
+               <start>/custom/jsp/library/component/search/cosdprompt.jsp</start>
+            </filter>
+            <filter clientenv="appintg">
+               <start>/wdk/appintgPrompt.jsp</start>
+            </filter>
+         </pages>
+         <!-- Behavior -->
+         <class>com.cosd.greenbuild.calwin.web.library.search.CalwinPrompt</class>
+         <nlsbundle>com.documentum.web.formext.component.PromptNlsProp</nlsbundle>
+      </component>
+   </scope>
+</config>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Developer's Comments
+# Parameters
+/* button                               (Required) The name of the button that 
+                                        will be displayed. Multiple values may 
+                                        be passed. 
+*/
+/* dontshowagain                        Boolean flag to display a checkbox that 
+                                        will hide the prompt the next time the 
+                                        context of the prompt occurs. The actual 
+                                        handling of this flag must be 
+                                        implemented in the caller component. 
+*/
+/* icon                                 Name of icon class 
+*/
+/* message                              String message in the prompt frame 
+*/
+/* title                                String title for the prompt frame 
+*/
+#
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->

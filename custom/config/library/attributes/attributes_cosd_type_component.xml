@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--***********************************************************************-->
+<!--                                                                       -->
+<!-- Confidential Property of Documentum, Inc.                             -->
+<!-- (c) Copyright Documentum, Inc. 2001.                                  -->
+<!-- All Rights reserved.                                                  -->
+<!-- May not be used without prior written agreement                       -->
+<!-- signed by a Documentum corporate officer.                             -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+<!--                                                                       -->
+<!-- Project        Component Library                                      -->
+<!-- Module         Attributes                                             -->
+<!-- File           attributes_dm_document_component.xml                   -->
+<!-- Description    dm_document Attributes Component Definition            -->
+<!-- Created on     24 August 2001                                         -->
+<!-- Tab width      3                                                      -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+<!--                                                                       -->
+<!-- VCS Maintained Data                                                   -->
+<!--                                                                       -->
+<!-- Revision       $Revision: 7$                                          -->
+<!-- Modified on    $Date: 2/27/2007 7:13:07 AM$                           -->
+<!--                                                                       -->
+<!-- Log at EOF                                                            -->
+<!--                                                                       -->
+<!--***********************************************************************-->
+<config version="1.0">
+   <scope type="calwin_case_doc">
+      <component id="attributes" extends="attributes:webcomponent/config/library/attributes/attributes_dm_document_component.xml">
+      <!-- <component id="editindexfieldscomponent"> -->
+         <desc>
+            Displays the primary attributes of the selected document and 
+            includes a link to expand the attributes list or to display all 
+            attributes. The attributes component is designed to run within the 
+            properties container component.
+         </desc>
+         <pages>
+            <start>/custom/jsp/library/component/attributes/attributes_calwin_case_doc.jsp</start>
+         </pages>
+         <!-- <class>com.documentum.webcomponent.library.attributes.Attributes</class> -->
+         <class>com.cosd.greenbuild.calwin.web.library.attributes.AttributesCalwinCaseType</class>
+      </component>
+   </scope>
+</config>
+
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Developer's Comments
+# Parameters
+/* enableShowAll                        (Optional) Boolean: Displays the "Show 
+                                        all attributes" link (true) or hides it 
+                                        (false). The default depends on the 
+                                        user's role: true for administrators, 
+                                        false for all non-administrator users. 
+*/
+/* objectId                             (Required) The ID of the object for 
+                                        which attributes are to be shown. 
+                                        
+*/
+/* readOnly                             (Optional) Boolean: Displays the 
+                                        attributes as read-only (true) or in 
+                                        edit mode (false). This value does not 
+                                        override the state of the attributes in 
+                                        the repository. The value of this 
+                                        parameter does override individual 
+                                        readonly attributes that are set to 
+                                        false on the docbaseattribute controls 
+                                        in the UI. 
+*/
+#
+# Elements
+/* <showpagesastabs>                    Set to true to display attribute 
+                                        categories as tabs. 
+*/
+/* <filter>                             Contains <enableShowAll>. Determines the 
+                                        criteria for activating the 
+                                        enableShowAll functionality. In the 
+                                        default configuration, the filter 
+                                        attribute "role" is set to 
+                                        "administrator". As a result, only  
+                                        administrators are able to view the 
+                                        extended set of attributes. Applies to
+                                        all types. 
+*/
+/* <filter>.<enableShowAll>             Boolean. True to display the 
+                                        "Show all attributes" link within the 
+                                        filter. Applies to all types. 
+*/
+/* <readOnly>                           Boolean. True to display the 
+                                        attributes as read-only. Applies to all 
+                                        types. This element does the same 
+                                        operation as the readOnly parameter. The 
+                                        readOnly parameter takes precedence. 
+*/
+#
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
